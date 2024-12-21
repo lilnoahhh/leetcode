@@ -3,7 +3,7 @@ step1
 
 headの末尾のnextが存在すればtrue、それ以外はfalseにしよう
 Cみたいにアロー演算子使ってよかったっけ
-python'''
+```python
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         fast = head
@@ -17,7 +17,7 @@ class Solution:
                 return True
         
         return False
-'''
+```
 C言語と書き方が混ざった、かつ解法が思いつかなかったため答えを見た。
 
 step2
@@ -99,11 +99,12 @@ setを用いてinで探す処理は平均 O(1) で済む。ハッシュ値を計
         - 空間計算量O(1)
             - ループ処理はあるが、毎回上書きするので、Nに関係ない
 
-"""python
-if node is in visited:"""
-と書いたらsyntax errorはきだした。whileと違ってifの中にinは使わない。
+```python 
+if node is in visited:
+```
+と書いたらsyntax errorはきだした。whileと違ってifの中にisは使わない。
 
-"""python
+```python
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         visited = set()
@@ -116,7 +117,7 @@ class Solution:
             visited.add(node)
             node = node.next
         return False
-"""
+```
 この解法が良さそうなのでこれでstep3にいく。
 
 step3 10分以内にエラーはかずに3回連続acceptさせる
@@ -124,7 +125,7 @@ step3 10分以内にエラーはかずに3回連続acceptさせる
 2回目1分6秒
 3回目51秒
 
-""" python
+``` python
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         visited = set()
@@ -138,6 +139,6 @@ class Solution:
             node = node.next
 
         return False
-"""
+```
 初手の発想として、循環の真偽判定はsetを用いて探索するという考え方で良いのだろうか？
 
