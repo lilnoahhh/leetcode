@@ -138,3 +138,18 @@ Nはlinkedlistのnodeの数
 空間計算量はlog(1)
 他に配列使ってるわけじゃないから1つだけ
 
+以下はレビューを参考に修正したコード
+headは先頭のノードの感覚があるのでwhileの中で動かすのはnodeだけにした
+```python
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        result = node = head
+
+        while node and node.next is not None:
+            if node.val == node.next.val:
+                node.next = node.next.next
+            else:
+                node = node.next
+        
+        return result
+```
